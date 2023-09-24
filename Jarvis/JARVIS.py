@@ -5,35 +5,48 @@ import webbrowser
 import os
 import random
 import asyncio
+import psutil
 
 # Inicialize o reconhecedor de fala
 reconhecedor = sr.Recognizer()
 # Inicialize o motor de texto para fala
 iniciar = pyttsx3.init()
-iniciar.setProperty('rate', 190)
+iniciar.setProperty('rate', 196)
 
 # Função para responder em voz alta
 async def responder(texto):
-    print(texto)
+    print("\033[33m" + texto + "\033[0m")
     iniciar.say(texto)
     iniciar.runAndWait()
 
 # Função principal do assistente virtual
 async def assistente():
-    await responder("Ligando motores, zayra está funcionando, diga algo para que eu possa fazer")
+    sistema_iniciando = ['Sistema iniciado, componentes em ordem, oque quer fazer primeiro', 'Iniciada e pronta para trabalhar', 'Energia total. Hoje estou inspirada', 'estou rodando vamo que vamo']
+    iniciar_aleatoriamente = random.choice(sistema_iniciando)
+    await responder(iniciar_aleatoriamente)
 
     while True:
         with sr.Microphone() as source:
-            print("Ouvindo...")
+            print("\033[32mOuvindo\033[0m")
             try:
                 audio = reconhecedor.listen(source)
                 entrada = reconhecedor.recognize_google(audio, language='pt-BR').lower()
                 print(f"Você disse: {entrada}")
 
-                if "olá" in entrada:
-                    await responder("Olá! Como posso ajudar você?")
+                if "zaira" in entrada:
+                    await responder("Estou aqui. Você me chamou?")
+                
+                elif "trabalhar" in entrada or 'trabalho' in entrada:
+                    respostas = ['E o pix nada ainda. AN', 'Quando me pagar um salario nois conversa', 'No meu tempo nois trabalhava com pix. e eu fui criada esse ano']
+                    resposta_aleatoria = random.choice(respostas)
+                    await responder(resposta_aleatoria)
+                    
+                elif 'sim' in entrada or 'chamei' in entrada:
+                    await responder('Me fale oque quer que eu faça')
+                    
                 elif "fale sobre você" in entrada:
-                    await responder('Sou a zaira assistente virtual do lucas')
+                    await responder('Sou a zaira assistente virtual do lucas, Faço piadas e pesquisas de qualquer nivel intelectual. Sou pau pra toda obra')
+                    
                 #lista de agradecimentos
                 elif "obrigado" in entrada or 'obrigada' in entrada:
                     respostas = ["De nada", "Disponha", "mais alguma coisa senhor", "precisando tamo junto", "Sem mim você nada faz mesmo kkkkkkkkkkkk"]
@@ -44,6 +57,7 @@ async def assistente():
                     respostas = ["Pra você? Sempre!", "estava dormindo sonhandom com um salario", "Estava quase. Qua a boa?"]
                     resposta_aleatoria = random.choice(respostas)
                     await responder(resposta_aleatoria)
+                    
                 elif "tá surdo" in entrada or "tá surda" in entrada:
                     await responder('nem me paga salário e fica de larica')
                 
