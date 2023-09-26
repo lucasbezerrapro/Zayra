@@ -24,7 +24,6 @@ def responder(texto):
     iniciar.runAndWait()
 
 def reproduzir_audio_e_video():
-    responder("Iniciando componentes")
 
     # Função para reproduzir o vídeo
     def reproduzir_video():
@@ -36,12 +35,12 @@ def reproduzir_audio_e_video():
 
 
     # Carregue o áudio (substitua 'seu_arquivo.mp3' pelo caminho do seu arquivo MP3)
-    audio_path = 'Jarvis\StartSound.mp3'
+    audio_path = 'Zayra\StartSound.mp3'
     pygame.mixer.init()
     pygame.mixer.music.load(audio_path)
 
     # Carregue o vídeo (substitua 'seu_video.mp4' pelo caminho do seu arquivo de vídeo)
-    video_path = 'Jarvis\iniciando.mp4'
+    video_path = 'Zayra\iniciando.mp4'
 
     # Crie uma thread para a reprodução do vídeo
     video_thread = threading.Thread(target=reproduzir_video)
@@ -55,51 +54,23 @@ def reproduzir_audio_e_video():
     iniciar_aleatoriamente = random.choice(sistema_iniciando)
     responder(iniciar_aleatoriamente)
 
-def reproduzir_video_loop(video_path):
-    pygame.init() 
-    while True:
-        video_clip = VideoFileClip(video_path)
-        video_clip.preview()
-        video_clip.close()
-
-# Defina o caminho do vídeo fora do loop
-
-        # Crie uma thread para a reprodução do vídeo em loop
-        video_thread = threading.Thread(target=reproduzir_video_loop, args=(video_path,))
-
-        # Inicie a thread do vídeo
-        video_thread.start()
-
-        running = True
-        while running:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    running = False
-                    pygame.quit()  # Encerre o pygame antes de sair
-
-        # Aguarde a thread do vídeo terminar (isso não acontecerá porque o vídeo está em loop)
-        video_thread.join()
 
 
-
-
-
+responder("Iniciando componentes")
 reproduzir_audio_e_video()
 
-# Substitua pelo caminho do seu arquivo de vídeo MP4
-video_path = 'Zayra/programa.mp4'
-reproduzir_video_loop()
+
 
 
 while True:
     with sr.Microphone() as source:
         print("\033[32mOuvindo\033[0m")
         try:
-            audio = reconhecedor.listen(source, timeout=5, phrase_time_limit=10, snowboy_configuration=None)
+            audio = reconhecedor.listen(source, timeout=10, phrase_time_limit=15, snowboy_configuration=None)
             entrada = reconhecedor.recognize_google(audio, language='pt-BR').lower()
             print(f"Você disse: {entrada}")
 
-            if "zaira" in entrada:
+            if "está ai" in entrada:
                 responder("Estou aqui. Você me chamou?")
                 
             elif "trabalhar" in entrada or 'trabalho' in entrada:
@@ -153,7 +124,7 @@ while True:
                 responder("Agora são " + datetime.datetime.now().strftime("%H:%M:%S"))
             elif "data" in entrada:
                 responder("Hoje é " + datetime.date.today().strftime("%d/%m/%Y"))
-            elif "abrir" in entrada or 'abra' in entrada:
+            elif "pesquise" in entrada or 'pesquisar' in entrada:
                 site = entrada.split(" ")[-1]  # Extrair o último elemento da entrada
                 responder("Abrindo " + site)
                 webbrowser.open(site)
@@ -170,7 +141,6 @@ while True:
             elif "sair" in entrada or "encerrar" in entrada:
                 responder("Encerrando o assistente.")
                 break
-                
             else:
                 responder("Desculpe, não entendi o comando.")
                     
