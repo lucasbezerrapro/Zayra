@@ -9,18 +9,18 @@
 
 # Alguns Comandos do assistente
 
-1 - Pergunta: Está ai?
+1 - Pergunta: Está ai?<br />
   Resposta do Assistente:"Estou aqui. Você me chamou?"
   
-2 - perguntas: Vamos ***trabalhar?** Acordei cedo para me dedicar mais ao **trabalho vamos?**
-  respostas:'E o pix nada ainda. AN',  'Quando me pagar um salário nós conversa','No meu tempo, nós trabalhava com pix e eu fui criada esse ano'
+2 - perguntas: Vamos ***trabalhar?** Acordei cedo para me dedicar mais ao **trabalho, vamos?**<br/>
+  respostas:'E o pix nada ainda. AN',  'Quando me pagar um salário nós conversa','No meu tempo, nós trabalhava com pix e eu fui criada esse ano'<br/>
   
-  **OBS:** Utilize palavras contendo **trabalho** ou **trabalhar** e o assistente vai responder do mesmo jeito.
+  **OBS:** Utilize palavras contendo **trabalho** ou **trabalhar** e o assistente vai responder do mesmo jeito.<br/>
 
-3 - pergunta: Abra a calculadora
+3 - pergunta: Abra a calculadora<br/>
   resposta: Abrindo a calculadora
 
-4 - pergunta: Me diga as horas
+4 - pergunta: Me diga as horas<br/>
   Resposta: Agora são ("Horario local")
 
 # Como usar o programa?
