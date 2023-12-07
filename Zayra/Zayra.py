@@ -9,8 +9,41 @@ from moviepy.editor import VideoFileClip
 import tkinter as tk
 from PIL import Image, ImageTk
 import pygame
+import requests
 import sys  # Importe o módulo sys
 
+
+
+    # Inicialize o motor de texto para fala
+iniciar = pyttsx3.init()
+iniciar.setProperty('rate', 196)
+
+    # Função para responder em voz alta
+def responder(texto):
+    print("\033[33m" + texto + "\033[0m")
+    iniciar.say(texto)
+    iniciar.runAndWait()
+
+#verificar o tempo
+def temperatura_atual():
+    chave_api ='d78e9dff3b54bffa76bcdbe5acdd567f'
+
+    nome_cidade = 'Serra Talhada'
+
+    url=f'https://api.openweathermap.org/data/2.5/weather?q={nome_cidade}&appid={chave_api}'
+
+    response = requests.get(url)
+    data = response.json()
+
+    temperatura = data['main']['temp']
+
+    if response.status_code == 200:
+        temperatura_kelvin = data['main']['temp']
+        temperatura_celsius = temperatura_kelvin - 273.15
+        responder(f'Temperatura atual em {nome_cidade}: {temperatura_celsius:.2f}°Celsius')
+    else:
+        responder(f'Erro na solicitação à API: {data["message"]}')
+    
 # Função que será executada quando o botão for clicado para encerrar o programa
 def encerrar_programa():
     sys.exit()  # Encerre o programa
@@ -43,19 +76,9 @@ def reproduzir_audio_e_video():
         video_thread.join()  # Aguarde a thread do vídeo terminar
 def iniciar_assistente():
     #reproduzir ao iniciar
-    reproduzir_audio_e_video()
+    #reproduzir_audio_e_video()
     # Inicialize o reconhecedor de fala
     reconhecedor = sr.Recognizer()
-
-    # Inicialize o motor de texto para fala
-    iniciar = pyttsx3.init()
-    iniciar.setProperty('rate', 196)
-
-    # Função para responder em voz alta
-    def responder(texto):
-        print("\033[33m" + texto + "\033[0m")
-        iniciar.say(texto)
-        iniciar.runAndWait()
 
 
     sistema_iniciando = ['Sistema iniciado, componentes em ordem, o que quer fazer primeiro','Iniciada e pronta para trabalhar', 'Energia total. Hoje estou inspirada','Estou rodando, vamos lá']
@@ -106,21 +129,23 @@ def iniciar_assistente():
                     dia_da_semana = datetime.datetime.now().weekday()
 
                     # Mapeie o número do dia da semana para o nome do dia
-                    if dia_da_semana == 0:
-                        nome_do_dia = "Segunda-feira"
-                    elif dia_da_semana == 1:
-                        nome_do_dia = "Terça-feira"
-                    elif dia_da_semana == 2:
-                        nome_do_dia = "Quarta-feira"
-                    elif dia_da_semana == 3:
-                        nome_do_dia = "Quinta-feira"
-                    elif dia_da_semana == 4:
-                        nome_do_dia = "Sexta-feira"
-                    elif dia_da_semana == 5:
-                        nome_do_dia = "Sábado"
-                    else:
-                        nome_do_dia = "Domingo"
+                    match dia_da_semana:
+                        case 0:
+                            nome_do_dia = "segunda"
+                        case 1:
+                            nome_do_dia = "Terça-feira"
+                        case 2:
+                            nome_do_dia = "Quarta-Feira"
+                        case 3:
+                            nome_do_dia = "Quinta-Feira"
+                        case 4:
+                            nome_do_dia = "Sexta-Feira"
+                        case 5:
+                            nome_do_dia = "Sabado"
+                        case _:
+                            nome_do_dia = "Domingo"
                     responder('Hoje é ' + nome_do_dia)
+                    
                 elif "horas" in entrada:
                     responder("Agora são " + datetime.datetime.now().strftime("%H:%M:%S"))
                 elif "data" in entrada:
@@ -135,6 +160,10 @@ def iniciar_assistente():
                 elif "desligar" in entrada:
                     responder("Desligando o computador.")
                     os.system("shutdown /s /t 1")
+                    
+                elif "temperatura" in entrada:
+                    temperatura_atual()
+                    
                 elif "reiniciar" in entrada:
                     responder("Reiniciando o computador.")
                     os.system("shutdown /r /t 1")
