@@ -3,6 +3,9 @@
 - [Português (README_PT.md)](README_PT.md)
 - [Inglês (README_EN.md)](README_EN.md)
 
+### Available Languages
+- [Portuguese (README_PT.md)](README_PT.md)
+- [English (README_EN.md)](README_EN.md)
 
 - Um projeto bem intenso criar uma **IA**, inspirado no homem de ferro, criei a minha propria assistente virtual **Zayra**
 
