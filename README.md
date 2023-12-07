@@ -12,12 +12,12 @@
 1 - Pergunta: Está ai?<br />
   Resposta do Assistente:"Estou aqui. Você me chamou?"
   
-2 - perguntas: Vamos ***trabalhar?** Acordei cedo para me dedicar mais ao **trabalho, vamos?**<br/>
+2 - perguntas: Vamos ***trabalhar?** Acordei cedo para me dedicar mais ao **trabalho, vamos?**<br/><br/>
   respostas:'E o pix nada ainda. AN',  'Quando me pagar um salário nós conversa','No meu tempo, nós trabalhava com pix e eu fui criada esse ano'<br/>
   
   **OBS:** Utilize palavras contendo **trabalho** ou **trabalhar** e o assistente vai responder do mesmo jeito.<br/>
 
-3 - pergunta: Abra a calculadora<br/>
+3 - pergunta: Abra a calculadora<br/><br/>
   resposta: Abrindo a calculadora
 
 4 - pergunta: Me diga as horas<br/>
@@ -86,9 +86,9 @@ pip install requests
 </pre>
 
 12. sys
-O módulo sys fornece acesso a algumas variáveis usadas ou mantidas pelo interpretador. Ele é uma parte integrada da biblioteca padrão, então nenhuma instalação adicional é necessária.
+O módulo sys fornece acesso a algumas variáveis usadas ou mantidas pelo interpretador. Ele é uma parte integrada da biblioteca padrão, então **nenhuma instalação adicional é necessária.**
 
-Após instalar essas dependências, você estará pronto para utilizar o script que faz uso dessas bibliotecas.
+Após instalar essas dependências, você estará pronto para utilizar o script que faz uso dessas bibliotecas.<br/>
 Certifique-se de estar em um ambiente virtual, se estiver usando um, para evitar conflitos de versões e dependências.
 
 
