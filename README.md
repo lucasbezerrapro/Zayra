@@ -17,7 +17,7 @@
   
   **OBS:** Utilize palavras contendo **trabalho** ou **trabalhar** e o assistente vai responder do mesmo jeito.<br/>
 
-3 - pergunta: Abra a calculadora<br/><br/>
+3 - pergunta: Abra a calculadora<br/>
   resposta: Abrindo a calculadora
 
 4 - pergunta: Me diga as horas<br/>
