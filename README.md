@@ -1,6 +1,6 @@
 # Zayra Assistente Virtual
 ### Idiomas Disponíveis
-- [Português (README_PT.md)](README_PT.md)
+- [Português (README_PT.md)](README.md)
 - [Inglês (README_EN.md)](README_EN.md)
 
 ### Available Languages
