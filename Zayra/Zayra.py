@@ -14,7 +14,7 @@ import sys  # Importe o módulo sys
 
 
 
-    # Inicialize o motor de texto para fala
+# Inicialize o motor de texto para fala
 iniciar = pyttsx3.init()
 iniciar.setProperty('rate', 196)
 
@@ -51,6 +51,7 @@ def encerrar_programa():
 #video para inicializar
 def reproduzir_audio_e_video():
 
+
         # Função para reproduzir o vídeo
         def reproduzir_video():
             nonlocal video_path
@@ -74,10 +75,16 @@ def reproduzir_audio_e_video():
         pygame.mixer.music.play()
         video_thread.start()
         video_thread.join()  # Aguarde a thread do vídeo terminar
+
+#IMPORTANTE!!!!!!!!
+#Para melhor deixar mais interessante tirre o comentario das funçoes abaixo :)
+
 def iniciar_assistente():
     #reproduzir ao iniciar
     #reproduzir_audio_e_video()
     # Inicialize o reconhecedor de fala
+    
+    
     reconhecedor = sr.Recognizer()
 
 
@@ -181,8 +188,12 @@ def iniciar_assistente():
 
 def iniciar_programa():
 
+    janela.destroy()
+
+def iniciar_programa():
     janela = tk.Tk()
     janela.geometry('400x400')
+    janela.title('Zayra Assistente')  # Adicione um título à janela
 
     # Alterar a cor da janela para amarelo
     janela.configure(bg='black')
@@ -198,7 +209,7 @@ def iniciar_programa():
 
     # Exibir a imagem no canvas
     canvas.create_image(0, 0, anchor=tk.NW, image=imagem)
-
+    
     # Adicionar botões ao canvas
     button = tk.Button(canvas, text='Iniciar Zayra', command=iniciar_assistente, bg='orange')
     button_window = canvas.create_window(165, 310, anchor=tk.NW, window=button)
@@ -207,5 +218,6 @@ def iniciar_programa():
     button_sair_window = canvas.create_window(153, 350, anchor=tk.NW, window=button_sair)
 
     janela.mainloop()
-    
+
+# Chame a função iniciar_programa para iniciar a interface
 iniciar_programa()
